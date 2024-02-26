@@ -1,0 +1,6 @@
+Se resuelve con una senal Ctrl+C la lectura de la memoria compartida por parte del proceso A. NO como lo indica el ejercicio:
+
+4) El proceso A lee la memoria compartida cada vez que escribe B o C y muesta lo leído.
+
+Realizar la sincronización con semáforos con nombres.
+

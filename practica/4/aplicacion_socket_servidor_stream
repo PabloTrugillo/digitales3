@@ -1,0 +1,32 @@
+/*Aplicación socket servidor stream
+Los datos recibidos por el socket los reenvía al socket cliente y los muestra en pantalla.
+Puede conectarse con varios clientes en simultaneo utilizando hijos.*/
+nclude <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+char bb[256];
+struct sockaddr_in st_dir={};
+int aa,dd1,dd2,cc;
+int main(int argc , char const * argv[]){
+argv[1]="2000";
+[st_dir.sin_family = AF_INET;]
+st_dir.sin_addr.s_addr = htonl(INADDR_ANY);
+st_dir.sin_port = htons(atoi (argv[1]));
+dd1=socket(AF_INET, SOCK_STREAM, 0);
+[bind(dd1, (struct sockaddr *)&st_dir,sizeof(struct sockaddr_in));]
+listen(dd1,1);
+[//linea en blanco]
+while(1) {
+dd2=accept(dd1, NULL, 0) ;
+cc=fork();
+if(cc==0) {
+while((aa = read([dd2],bb,sizeof (bb))) > 0) {
+write([dd2] ,bb, aa);
+write(STDOUT_FILENO , bb, aa);
+}
+}
+} r
+eturn 0;
+}

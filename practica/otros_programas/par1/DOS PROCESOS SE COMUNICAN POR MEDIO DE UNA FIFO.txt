@@ -1,0 +1,32 @@
+//Dos procesos relacionados se comunican por medio de una tubería.
+//1. El proceso hijo escribe "0123456789" en la tubería y termina.
+//2. El proceso padre lee de la tubería y muestra lo leído.
+
+#include stdio.h
+#include stdlib.h
+#include sys/types.h
+#include unistd.h
+
+#define E "0123456789"
+#define CC "/tmp/BB"
+int e,b,f,g;
+char d[1];
+int main(){
+	mkfifo(CC,0777); 
+	b=fork();
+	if(b ≥ 0){
+		[//linea en blanco]
+		f = open(CC, O_WRONLY, 0);
+		[write(f,E,sizeof(E));]
+		wait(NULL);
+		close(f);
+		[unlink(CC);]	
+		exit(0);
+	}
+	[//linea en blanco]
+	e = open(CC,O_RDONLY,0);
+ 	[g = read(e, d, sizeof(d));]
+	write(STDOUT_FILENO, d, g);
+	[close(e);]
+	exit(0);
+	}

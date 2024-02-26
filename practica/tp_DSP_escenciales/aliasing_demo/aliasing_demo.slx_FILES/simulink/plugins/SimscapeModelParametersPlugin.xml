@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SimscapeModelParametersPlugin>
+  <P Name="SimscapeDaeAutoSolver">ode23t</P>
+  <P Name="SimscapeModelParametersPlugin">on</P>
+</SimscapeModelParametersPlugin>

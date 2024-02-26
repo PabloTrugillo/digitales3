@@ -1,0 +1,3 @@
+Este ejercicio NO puede ser resuelto de la misma forma que semn02a_mio.c y semn02b_mio.c, porque en este caso el proceso LECTOR es quien
+CREA e INICIALIZA el semaforo debido a la presencia de mas de 1 proceso ESCRITOR, no pudiendo tenerse mas de un proceso (ESCRITOR)
+CREANDO e INICIALIZANDO un semaforo.

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>irr_vs_fir: script to compare IIR and FIR filters dimensions for similar frequency response.</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Version: 001</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Date:    2020/04/21</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Author:  Rodrigo Gonzalez &lt;rodralez@frm.utn.edu.ar&gt;</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>URL:     https://github.com/rodralez/td3</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="text"/><w:jc w:val="left"/></w:pPr><w:r><w:t>URL:     https://github.com/rodralez/control</w:t></w:r></w:p><w:p><w:pPr><w:sectPr/></w:pPr></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[clc
+clear
+close all]]></w:t></w:r></w:p><w:p><w:pPr><w:sectPr/></w:pPr></w:p><w:p><w:pPr><w:pStyle w:val="heading"/><w:jc w:val="left"/></w:pPr><w:r><w:t>FIR design</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[% fir_kaiser_3400_44100: Low-pass FIR filter, Kaiser window.
+
+Hd_fir = fir_kaiser_3400_44100;
+
+fir_coeff = Hd_fir.coefficients;]]></w:t></w:r></w:p><w:p><w:pPr><w:sectPr/></w:pPr></w:p><w:p><w:pPr><w:pStyle w:val="heading"/><w:jc w:val="left"/></w:pPr><w:r><w:t>IIR design</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[% iir_elliptic_3400_44100: funcion que disena un filtro IIR a partir de
+% filtro analogico eliptico
+
+Hd_iir = iir_elliptic_3400_44100;
+
+iir_coeff = Hd_iir.coefficients;]]></w:t></w:r></w:p><w:p><w:pPr><w:sectPr/></w:pPr></w:p><w:p><w:pPr><w:pStyle w:val="heading"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Compare both filters</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[% fvtool: filter visualization tool
+
+hfvt = fvtool(Hd_iir, Hd_fir, 'Analysis','Magnitude');
+legend(hfvt,'IIR Elliptic', 'FIR Kaiser')
+]]></w:t></w:r></w:p><w:p><w:pPr><w:sectPr/></w:pPr></w:p><w:p><w:pPr><w:pStyle w:val="heading"/><w:jc w:val="left"/></w:pPr><w:r><w:t>Filters dimensions</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="code"/></w:pPr><w:r><w:t><![CDATA[fir_dim = size(Hd_fir.Numerator);
+iir_dim = size(Hd_iir.sosMatrix);
+
+fprintf ('FIR filter dimension is [%d %d]', fir_dim(1), fir_dim(2))
+fprintf ('IIR filter dimension is [%d %d]', iir_dim(1), iir_dim(2))
+]]></w:t></w:r></w:p></w:body></w:document>

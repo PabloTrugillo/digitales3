@@ -1,0 +1,30 @@
+/*Recibe datos por el socket, le envía al socket cliente "ok"y muestra en pantalla lo recibido por el socket.
+Puede conectarse con varios clientes en simultaneo utilizando hijos.*/
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+char bb[256];
+struct sockaddr_in cc={};
+int aa,des1,des2;
+int main(int argc , char const * argv[]){
+argv[1]="2000";
+add.sin_family = AF_INET;
+add.sin_port = htons(atoi(argv[1]));
+add.sin_addr.s_addr = htonl(INADDR_ANY);
+ss1=socket(AF_INET,SOCK_STREAM,0);
+[bind(ss1,(struct sockaddr *)&add,sizeof(struct sockaddr_in));]
+[listen(ss1,1);]
+while(1) {
+[ss2=accept(ss1,NULL,0);]
+if(fork()) {
+[//linea en blanco]
+while((aa = read(ss2,ff,sizeof(ff))) > 0) {
+write(ss2,"ok", 2);
+[write(STDOUT_FILENO,ff,aa);]
+}
+}
+}
+return 0;
+}

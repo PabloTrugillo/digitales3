@@ -1,0 +1,36 @@
+/*Complete el siguiente código en C para que la variable acum
+presente el menor error posible para la precisión Q7.8:
+*/
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<limits.h>
+int16_t fp2fx(float X, int16_t n)
+{
+int16_t temp;
+temp = (int16_t) round( X * ( 1 < < n ) );
+return temp;
+}
+float fx2fp(int16_t X, int16_t n)
+{
+float temp;
+temp = (float) (X) / ( 1 < < n );
+return temp;
+}
+int main(int argc, char** argv)
+{
+float x[5]={1.1, 2.2, 3.3, 4.4, 5.5};
+float y[5]={6.6, 7.7, 8.8, 9.9, 10.10};
+int16_t N = 5;
+int32_t aux = 0;
+int32_t acum = 0;
+// MAC OPERATION
+acum = 0;
+for(int i=0;i<N;i++)
+{
+aux = (int32_t) fp2fx( x[i], 8 ) * (int32_t) fp2fx( y[i], 8);
+acum = (acum + aux) ;
+}
+printf("acum = %ld \n", acum );
+printf("acum = %f \n", fx2fp((int16_t)(acum >> 16), 8));
+}

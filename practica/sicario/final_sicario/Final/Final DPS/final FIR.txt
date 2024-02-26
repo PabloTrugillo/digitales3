@@ -1,0 +1,17 @@
+Genere una señal que sume una señal senoidal con frecuencia 
+fundamental fn = 1000 Hz con una señal de 50 Hz. Esta última se
+ considera como una interferencia. Elija una frecuencia de muestreo 
+adecuada.
+
+ Se desea diseñar un filtro pasa-banda que rechace la señal de 50 Hz y
+que deje el tono de 1000 Hz.
+
+Use la herramienta filterDesigner para diseñar un filtro FIR
+pasa-banda con frecuencias de corte de 500 Hz y 1500 Hz tipo ventana de 
+Kaiser con ß = 7.5, orden 100 y formato punto flotante, precisión 
+doble. 
+
+Procese la señal de interés con el filtro diseñado.
+
+ Grafique la señal de entrada al filtro y la señal de salida del
+filtro, ambas en el dominio del tiempo y de la frecuencia.
